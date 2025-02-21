@@ -1,35 +1,44 @@
 package AD.Vinoteca.models;
 
-
 import jakarta.persistence.*;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity(name = "vinos")
+@Schema(description = "Modelo que representa un vino en el sistema.")
 public class Vino {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(description = "Identificador único del vino.", example = "1")
     private int id;
 
     @Column
+    @Schema(description = "Nombre del vino.", example = "Cabernet Sauvignon")
     private String nombre;
 
     @Column
+    @Schema(description = "Cantidad disponible del vino en stock.", example = "100")
     private int cantidad;
 
-    @Column
+    @Column(name = "variedad_uva")
+    @Schema(description = "Variedad de uva del vino.", example = "Cabernet Sauvignon")
     private String variedad_uva;
 
     @Column
+    @Schema(description = "Año de producción del vino.", example = "2020")
     private int anho;
 
     @Column
+    @Schema(description = "Precio del vino.", example = "15.99")
     private double precio;
 
     @Column
+    @Schema(description = "Descripción del vino.", example = "Un vino tinto robusto con notas de frutas.")
     private String descripcion;
 
     @ManyToOne
     @JoinColumn(name = "bodega_id")
+    @Schema(description = "Bodega a la que pertenece el vino.")
     private Bodega bodega;
 
     public Vino() {
